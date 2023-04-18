@@ -35,14 +35,18 @@ window.onload = function () {
        let forEncript = document.getElementById("forEncript").value;
        print("response",encript(forEncript));
        print("welcome","");
+       document.getElementById("search").style.display = "none";
     });
     document.getElementById("unencript").addEventListener('click',()=>{
         let forEncript = document.getElementById("forEncript").value;
         print("response",unencript(forEncript));
         print("welcome","");
+        document.getElementById("search").style.display = "none";
     });
     document.getElementById("copy").addEventListener('click',()=>{
         let foCopy = document.getElementById("response").textContent;
-        navigator.clipboard.writeText(foCopy);
+        navigator.clipboard.writeText(foCopy).then(()=>{
+            alert("El texto: '"+ foCopy+"' fue copiado.")
+        });
     });
 }

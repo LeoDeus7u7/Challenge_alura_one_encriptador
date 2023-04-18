@@ -108,8 +108,12 @@ body{
 
 }
 .result .resultText{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     flex: 90%;
     text-align: center;
+    
 }
 .result .buttontContainer{
 
@@ -143,6 +147,9 @@ body{
     body{
         flex-direction: column;
         flex-wrap: nowrap;
+    }
+    #search{
+        display: none;
     }
     
 }
