@@ -28,20 +28,42 @@ function unencript(text) {
 function print(id,text){
     document.getElementById(id).textContent = text;
 }
- 
+function printSlowAnimation(text,action){
+    let time = 200;
+    if(text.length >= 20){time = 150};
+    if(text.length >= 40){time = 50};
+    let response = document.getElementById("response");
+        response.textContent = "";
+        print("welcome",action);
+        document.getElementById("spiner").style.display = "inline-block";
+    let aux = "";
+    let index = 0;
+    let inter = setInterval(() => {
+        aux = aux + text[index];
+        response.textContent = aux;
+        index++;
+        if(aux.length === text.length){
+            print("welcome","");
+            document.getElementById("spiner").style.display = "none";
+            clearInterval(inter);
+        };
+        }, time);
+}
+
 window.onload = function () {
     
     document.getElementById("encript").addEventListener('click',()=>{
        let forEncript = document.getElementById("forEncript").value;
-       print("response",encript(forEncript));
        print("welcome","");
        document.getElementById("search").style.display = "none";
+       printSlowAnimation(encript(forEncript),"Encriptando");
+       
     });
     document.getElementById("unencript").addEventListener('click',()=>{
         let forEncript = document.getElementById("forEncript").value;
-        print("response",unencript(forEncript));
         print("welcome","");
         document.getElementById("search").style.display = "none";
+        printSlowAnimation(unencript(forEncript),"Desenciptando");
     });
     document.getElementById("copy").addEventListener('click',()=>{
         let foCopy = document.getElementById("response").textContent;
