@@ -29,6 +29,7 @@ function print(id,text){
     document.getElementById(id).textContent = text;
 }
 function printSlowAnimation(text,action){
+    if(text != ""){
     let time = 200;
     if(text.length >= 20){time = 150};
     if(text.length >= 40){time = 50};
@@ -47,11 +48,36 @@ function printSlowAnimation(text,action){
             document.getElementById("spiner").style.display = "none";
             clearInterval(inter);
         };
-        }, time);
+        }, time);}
 }
 
 window.onload = function () {
-    
+// Selecion de temas
+    const themeButton = document.getElementById('toggle')
+    const darkTheme = 'dark-theme'
+    const selectedTheme = localStorage.getItem('selected-theme')
+    const userHasDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+
+    if (selectedTheme) {
+ 
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+    if(selectedTheme === 'dark'){themeButton.checked = false;}else{
+        themeButton.checked = true;
+  }
+  
+    } else {
+  
+    if (userHasDarkTheme) document.body.classList.add(darkTheme)
+    themeButton.checked = false;
+    }
+    themeButton.addEventListener('click', () => {
+ 
+     document.body.classList.toggle(darkTheme)
+  
+    localStorage.setItem('selected-theme', getCurrentTheme())
+    })
+//selecion de tema
     document.getElementById("encript").addEventListener('click',()=>{
        let forEncript = document.getElementById("forEncript").value;
        print("welcome","");
@@ -68,7 +94,7 @@ window.onload = function () {
     document.getElementById("copy").addEventListener('click',()=>{
         let foCopy = document.getElementById("response").textContent;
         navigator.clipboard.writeText(foCopy).then(()=>{
-            alert("El texto: '"+ foCopy+"' fue copiado.")
+            print("welcome","El texto: '"+ foCopy+"' fue copiado.")
         });
     });
 }

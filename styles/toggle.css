@@ -1,0 +1,54 @@
+:root {
+    --light: #ECECEC;
+    --dark: #282F44;
+  }
+  .toggle-switch {
+    position: relative;
+    width: 75px;
+  }
+  
+  label {
+    position: absolute;
+    width: 100%;
+    height: 37.5px;
+    background-color: var(--dark);
+    border-radius: 18.75px;
+    cursor: pointer;
+  }
+  
+  input {
+    position: absolute;
+    display: none;
+  }
+  
+  .slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 18.75px;
+    transition: 0.3s;
+  }
+  
+  input:checked ~ .slider {
+    background-color: var(--light);
+  }
+  
+  .slider::before {
+    content: "";
+    position: absolute;
+    top: 4.875px;
+    left: 6px;
+    width: 28.125px;
+    height: 28.125px;
+    border-radius: 50%;
+    box-shadow: inset 10.5px -1.5px 0px 0px var(--light);
+    background-color: var(--dark);
+    transition: 0.3s;
+  }
+  
+  input:checked ~ .slider::before {
+    transform: translateX(35.625px);
+    background-color: var(--dark);
+    box-shadow: none;
+  }
+  

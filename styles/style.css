@@ -1,18 +1,46 @@
+:root{
+    --main: #454c5f;
+    --main-light: #F5D061;
+    --comp-dark: #E6AF2E;
+    --comp-light: #ECECEC;
+}
+body.dark-theme {
+    --main: #282F44;
+    --main-light: #ada898;
+    --comp-dark: #353842;
+    --comp-light: #797979;
+  }
 html, body{
     height: 100vh;
+}
+* {
+    transition: background-color .5s ease;
 }
 body{
     margin: 0;
     display:flex;
     flex-wrap: wrap;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #282F44;
+    color: var(--main);
+    
 }
+
 .firstSection{
-    flex: 10%;
+    flex: 5%;
     display: flex;
+    flex-direction: column;
+    background-color: var(--main-light);
+}
+.firstSection-toggle{
+    display: flex;
+    align-items: center;
     justify-content: center;
-    background-color: #ECECEC;
+    margin-top: 55vh;
+}
+.firstSection-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .firstSection img{
     margin-top: 120px;
@@ -30,15 +58,15 @@ body{
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    background-color: #282F44;
+    background-color: var(--main);
     flex: 40%;
     
 }
 .secondSection textarea{
-    background-color: #282F44;
+    background-color: var(--main);
     padding: 10px;
     height: 45%;
-    color: #E6AF2E;
+    color: var(--main-light);
     margin: 20px;
     font-size: 3rem;
     border-radius: 15px;
@@ -55,31 +83,32 @@ body{
     margin: 5px;
 }
 .secondSection button{
-    border: 1px solid #ECECEC;
+    border: 1px solid var(--main-light);
     text-decoration: none;
     text-transform: uppercase;
     height: 2.5rem;
     width: 16rem;
     border-radius: 10px;
-    color: #282F44;
+    background-color: var(--main-light);
+    color: var(--main);
     font-weight: 700;
     font-size: 1.5rem;
     transition: background-color .5s ease;
 }
 .secondSection button:hover{
-    border: 1px solid #282F44;
-    background-color: #E6AF2E;
+    border: 1px solid var(--main);
+    opacity: 50%;
 }
 .secondSection button:active{
-    border: 1px solid #ECECEC;
-    background-color: #F5D061;
+    border: 1px solid var(--main-light);
+    background-color: var(--comp-light);
     box-shadow: 0 0 15px black;
     
 }
 
 
 .warning{
-    color: #ECECEC;
+    color: var(--main-light);
     text-align: center;
     text-decoration: underline;
 
@@ -91,18 +120,18 @@ body{
     justify-content: center;
     place-items: center;
     gap: 5%;
-    background-color: #282F44;
+    background-color: var(--main);
     flex: 40%;
 
 }
 .result {
-    border: 2px solid #E6AF2E;
+    border: 2px solid var(--comp-dark);
     border-radius: 15px;
     height: 70%;
     width: 60%;
     margin: 0 20px;
     padding: 10px;
-    background-color: #F5D061;
+    background-color: var(--comp-light);
     box-shadow: 5px 5px 10px black ;
     display: flex;
     flex-direction: column;
@@ -122,17 +151,17 @@ body{
 }
 .buttontContainer button{
     height: 35px;
-    color: #282F44;
-    background-color: #ECECEC;
-    border:1px solid #F5D061;
+    color: var(--main);
+    background-color: var(--main-light);
+    border:1px solid var(--comp-light);
     border-radius: 10px;
     transition: background-color .5s ease;
 }
 .buttontContainer button:hover{
-    border: 1px solid #282F44;
+    border: 1px solid var(--main);
 }
 .buttontContainer button:active{
-    box-shadow: 0px 0px 5px #282F44;
+    box-shadow: 0px 0px 5px var(--main);
 }
 .footer{
     position: fixed;
@@ -141,7 +170,7 @@ body{
     width: 100vw;
     height: 2.5vh;
     text-align: center;
-    color: #ECECEC;
+    color: var(--main-light);
 }
 .lds-dual-ring {
     display: none;
@@ -155,8 +184,8 @@ body{
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid #282F44;
-    border-color: #282F44 transparent #282F44 transparent;
+    border: 6px solid var(--main);
+    border-color: var(--main) transparent var(--main) transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
   @keyframes lds-dual-ring {
@@ -185,9 +214,13 @@ body{
     }
     .firstSection{
         flex: 0;
-        
-        justify-content: left;
+        flex-direction: row;
+
+        justify-content:space-between;
         height: 10vh;
+    }
+    .firstSection-toggle{
+        margin-top: 0;
     }
     .firstSection img{
         margin: 0;
@@ -198,4 +231,5 @@ body{
     .thirdSection{
         flex: 30%;
     }
+
 }
